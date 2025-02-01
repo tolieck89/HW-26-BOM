@@ -1,0 +1,9 @@
+.main {
+    display: flex;
+}
+
+.main > div {
+    width: 30%;
+    border: 1px solid black;
+    min-height: 100px;
+}

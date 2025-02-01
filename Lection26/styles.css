@@ -1,0 +1,14 @@
+.main{
+    margin: 0 auto;
+    background-color: aqua;
+    width: 300px;
+    /* height: 100px; */
+    border: 1px solid black;
+    padding: 20px;
+}
+
+.main button {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
