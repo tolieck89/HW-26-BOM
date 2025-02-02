@@ -19,29 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 });
 
-
 function showCategories(){
-   
     showEntities('.categories', 'category', categories);
-
 }
 
 function showProductsByCategory(categoryID){
 
-    console.log(`U wanna get products by category ${categoryID}`);
-    
     const myCategory = categories.find(category => category.id === categoryID);
     const products = myCategory.items;
     showEntities('.products', 'product', products);
 }
 
-
 function showEntities(parentSelector, elementClassName, entities) {
 
     const parentElement = document.querySelector(parentSelector);
     parentElement.innerHTML = '';
-
-  
+    
     for (let entity  of entities) {
     const divElement = document.createElement('div');
     divElement.textContent = entity.name;
