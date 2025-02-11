@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
         event.target.tagName === "DIV" && 
         event.target.classList.contains("category")){
             const categoryID = event.target.getAttribute('data-id');
+            document.querySelector(".products").setAttribute('data-category', categoryID);
             showProductsByCategory(categoryID);
         }
     });
@@ -14,7 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (
             event.target.tagName === "DIV" && 
             event.target.classList.contains("product")){
-                console.dir(event.target.textContent);
+            const selecteCategoryID = event.target.parentNode.getAttribute('data-category');
+            const productID = event.target.getAttribute('data-id');
+            const selecteCategory = categories.find(category => category.id === selecteCategoryID);
+            const selectedProduct = selecteCategory.items.find(item => item.id === productID);
+            console.log(selectedProduct);
+            showProductInfo(selectedProduct);
             }
 });
 });
@@ -42,3 +48,36 @@ function showEntities(parentSelector, elementClassName, entities) {
     divElement.setAttribute('data-id', entity.id);
     parentElement.appendChild(divElement);
 }}
+
+function showProductInfo(product){
+    if(!product){
+        return;
+    }
+
+    const parent = document.querySelector('.product_info');
+
+    parent.innerHTML = `
+    <h2>${product.name}</h2>
+    <p>${product.price}</p>
+    <p>${product.description}</p>
+    `;
+
+    parent.innerHTML += generateSliderLayout();
+    initializeSlider();
+
+    const bueBtn = document.createElement('button');
+    bueBtn.type = 'button';
+    bueBtn.textContent = 'Buy';
+    bueBtn.addEventListener('click', () => {
+        const notification =  document.querySelector('.notification');
+        notification.textContent = `Congrats! You bought the ${product.name}`;
+        notification.classList.remove('hidden');
+        setTimeout(() => {
+            notification.classList.add('hidden')
+        }, 3000);
+
+    } );
+
+    parent.appendChild(bueBtn);
+
+}
