@@ -15,6 +15,38 @@
         <div class="product_info"></div>
     </div>
 
+   
+
+    <div class="order_form hidden">
+        <form name="order">
+            <div>
+                <input type="text" name="name" placeholder="Your name">
+            </div>
+            <div>
+                <input type="number" name="amount" placeholder="Amount">
+                <span id="calculation"></span>
+            </div>
+            <div>
+                <input type="text" name="phone" placeholder="Phone number">
+            </div>
+            <select name="city">
+                <option value="-1">Select your city</option>
+                <option value="KOZ">Koziatyn</option>
+                <option value="IRP">Irpin</option>
+                <option value="BCH">Bucha</option>
+                <option value="HSTML">Hostomel</option>
+                <option value="KY">Kyiv</option>
+                <option value="ROM">Romanivka</option>
+                <option value="KRK">Kriukivshchyna</option>
+                <option value="VSHN">Vyshneve</option>
+            </select>
+            <div> <!--Add NP adress --> </div>
+            <div>
+                <button type="button" id="finish_order">Order now</button>
+            </div>
+        </form>
+    </div>
+
     <div class="notification hidden"></div>
     
     <script src="JS/shopdata.js"></script>

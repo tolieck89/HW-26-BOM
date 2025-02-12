@@ -35,3 +35,14 @@ const categories = [
         
     ]
     }, ]
+
+    cities = {
+        KOZ: "Koziatyn",
+        IRP: "Irpin",
+        BCH: "Bucha",
+        HSTML: "Hostomel",
+        KY: "Kyiv",
+        ROM: "Romanivka",
+        KRK: "Kriukivshchyna",
+        VSHN: "Vyshneve",
+    };

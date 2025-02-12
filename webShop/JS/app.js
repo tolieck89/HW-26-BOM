@@ -1,6 +1,8 @@
+let selectedProduct;
 document.addEventListener('DOMContentLoaded', () => {
     showCategories();
-
+});
+   
     document.querySelector('.categories').addEventListener('click', (event) => {
         if (
         event.target.tagName === "DIV" && 
@@ -18,11 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const selecteCategoryID = event.target.parentNode.getAttribute('data-category');
             const productID = event.target.getAttribute('data-id');
             const selecteCategory = categories.find(category => category.id === selecteCategoryID);
-            const selectedProduct = selecteCategory.items.find(item => item.id === productID);
+            selectedProduct = selecteCategory.items.find(item => item.id === productID);
             console.log(selectedProduct);
             showProductInfo(selectedProduct);
             }
-});
 });
 
 function showCategories(){
@@ -63,21 +64,54 @@ function showProductInfo(product){
     `;
 
     parent.innerHTML += generateSliderLayout();
-    initializeSlider();
+    initializeSlider(product.images);
 
     const bueBtn = document.createElement('button');
     bueBtn.type = 'button';
+    bueBtn.classList.add('buebtn');
     bueBtn.textContent = 'Buy';
-    bueBtn.addEventListener('click', () => {
-        const notification =  document.querySelector('.notification');
-        notification.textContent = `Congrats! You bought the ${product.name}`;
-        notification.classList.remove('hidden');
-        setTimeout(() => {
-            notification.classList.add('hidden')
-        }, 3000);
-
-    } );
-
+    bueBtn.addEventListener('click', showOrderForm(product));
     parent.appendChild(bueBtn);
+}
+
+function showOrderForm(product){
+    document.querySelector('.order_form').classList.remove('hidden');
 
 }
+
+document.querySelector('#finish_order').addEventListener('click', () =>{ 
+    // console.log(document.forms.order.elements.name);
+
+    const client = {
+        name: document.forms.order.name.value,
+        city: cities[document.forms.order.city.value],
+
+    };
+
+    console.log(client);
+
+
+    showSuccessNotification();
+});
+
+
+    function showSuccessNotification() {
+    const notification =  document.querySelector('.notification');
+    notification.textContent = `Congrats! You bought the producft`;
+    notification.classList.remove('hidden');
+    setTimeout(() => {
+        notification.classList.add('hidden')
+    }, 3000);
+}
+
+document.querySelector('input[name="amount"]').addEventListener('change',  event => {
+    const newAmount = event.target.value;
+    if(newAmount<1){
+        event.target.value = 1;
+        return;
+    }
+    const price = parseInt(selectedProduct.price);
+    const result = newAmount * price;
+    document.getElementById('calculation').textContent = `$${result}`;
+    
+})
