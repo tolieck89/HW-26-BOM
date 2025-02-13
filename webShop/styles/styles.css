@@ -1,11 +1,24 @@
-.main {
-    display: flex;
+body {
+    background-color: rgba(163, 177, 189, 0.116);
 }
 
-.main > div {
-    width: 30%;
-    border: 1px solid black;
-    min-height: 100px;
+.main {
+    display: grid;
+    grid-template-columns: 150px 0.8fr;
+    grid-template-rows: 200px 1fr;
+    grid-template-areas: 
+    "categories product_info"
+    "products  product_info"
+    ;
+    margin-top: 20px;
+    row-gap: 20px;
+}
+
+.order_form {
+    grid-area: order_form;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .notification {
@@ -13,15 +26,128 @@
     font-weight: bold;
     width: 500px;
     height: 30px;
-    margin: 0 auto;
-    margin-top: 20px;
-    padding: 20px;
+    padding: 20px 0;
+    position: absolute;
+    z-index: 3;
+    border-radius: 20px;
+    top: 50px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
 
 .hidden {
     display: none;
 }
 
-.buebtn {
-    background-color:aqua;
+.buybtn {
+    grid-area: buebtn;
+    width: 50%;
+    max-height: 50px;
+    justify-self: center;
+}
+
+.product_info {
+    display: grid;
+    grid-area: product_info;
+    row-gap: 15px;
+    grid-template-columns: 0.3fr 0.5f ;
+     grid-template-rows: 50px 50px ;
+    grid-template-areas:
+    "product_name product_slider "
+    "product_price product_slider"
+    "product_description product_slider"
+    "buebtn product_slider"
+    "order_form product_slider"
+    "order_form product_slider"
+    ;
+    min-height: 800px;
+    gap: 10px;
+    border-left: 1px dashed gray;
+    padding-left: 20px;
+}
+
+
+
+.categories {
+    grid-area: categories;
+}
+
+.products {
+    grid-area: products;
+}
+
+.product_name {
+    grid-area: product_name;
+    justify-self: center;
+}
+
+.product_price {
+    grid-area: product_price;
+
+}
+
+.product_description {
+    grid-area: product_description;
+}
+
+header {
+    display: flex;
+    background-color: beige;
+    height: 40px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    display: flex;
+    align-items: center;
+}
+
+.logo img, .another_header_block img  {
+    width: 40px;
+    height: 40px;
+}
+
+.header_list {
+    display: flex;
+    gap: 15px;
+}
+
+.login_form input {
+    width: 100px;
+}
+
+.another_header_block  {
+    display: flex;
+    align-items: center;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.input-container input {
+    padding-left: 30px; 
+    width: 200px;
+    height: 30px;
+}
+
+.input-container .icon {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; 
+    color: gray;
+}
+
+input {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.startpage {
+  background-color: blue;
 }

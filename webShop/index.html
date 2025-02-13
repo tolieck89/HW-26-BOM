@@ -8,49 +8,86 @@
     <title>WebShop</title>
 </head>
 <body>
+    <div class="notification hidden"></div>
 
+    <header>
+        <div class="logo">
+        <img src="./img/icons/logo.png" alt="">
+        <div>AdultShop</div>
+    </div>
+    <div class="input-container">
+        <input type="text" placeholder="Search...">
+        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.099zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg></span>
+    </div>
+    <div class="header_list">
+        <div class="home"><a href="#">Home</a></div>
+        <div class="Contacts"><a href="#">Contacts</a></div>
+        <div class="articles"><a href="#">How to choose</a></div>
+    </div>
+
+  
+        <div class="login_form">
+            <form action="reg">
+                <input type="email" placeholder="Your e-mail">
+                <input type="password" placeholder="Password">
+                <button type="submit">Send</button>
+                <button type="reset">Reset</button>
+            </form>
+        </div>
+        <div class="another_header_block">
+            <div class="cart"><a href="#">Cart</a></div>
+            <img src="./img/icons/pngwing.com.png" alt="">
+        </div>
+
+    </header>
     <div class="main">
-        <div class="categories"></div>
+        <div class="categories">
+            
+        </div>
         <div class="products"></div>
-        <div class="product_info"></div>
+        <div class="product_info">
+            <div class="order_form hidden">
+                <form name="order">
+                    <div>
+                        <input type="text" name="name" placeholder="Your name">
+                    </div>
+                    <div>
+                        <input type="number" name="amount" placeholder="Amount" >
+                        <span id="calculation"></span>
+                    </div>
+                    <div>
+                        <input type="text" name="phone" placeholder="Phone number">
+                    </div>
+                    <select name="city">
+                        <option value="-1">Select your city</option>
+                        <option value="KOZ">Koziatyn</option>
+                        <option value="IRP">Irpin</option>
+                        <option value="BCH">Bucha</option>
+                        <option value="HSTML">Hostomel</option>
+                        <option value="KY">Kyiv</option>
+                        <option value="ROM">Romanivka</option>
+                        <option value="KRK">Kriukivshchyna</option>
+                        <option value="VSHN">Vyshneve</option>
+                    </select>
+                    <div> <!--Add NP adress --> </div>
+                    <div>
+                        <button type="button" id="finish_order">Order now</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
    
 
-    <div class="order_form hidden">
-        <form name="order">
-            <div>
-                <input type="text" name="name" placeholder="Your name">
-            </div>
-            <div>
-                <input type="number" name="amount" placeholder="Amount">
-                <span id="calculation"></span>
-            </div>
-            <div>
-                <input type="text" name="phone" placeholder="Phone number">
-            </div>
-            <select name="city">
-                <option value="-1">Select your city</option>
-                <option value="KOZ">Koziatyn</option>
-                <option value="IRP">Irpin</option>
-                <option value="BCH">Bucha</option>
-                <option value="HSTML">Hostomel</option>
-                <option value="KY">Kyiv</option>
-                <option value="ROM">Romanivka</option>
-                <option value="KRK">Kriukivshchyna</option>
-                <option value="VSHN">Vyshneve</option>
-            </select>
-            <div> <!--Add NP adress --> </div>
-            <div>
-                <button type="button" id="finish_order">Order now</button>
-            </div>
-        </form>
-    </div>
+   
 
-    <div class="notification hidden"></div>
     
     <script src="JS/shopdata.js"></script>
     <script src="JS/slider.js"></script>
     <script src="JS/app.js"></script>
+
 </body>
 </html>
