@@ -11,9 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // })
 
-
-   
-    document.querySelector('.categories').addEventListener('click', (event) => {
+document.querySelector('.categories').addEventListener('click', (event) => {
         if (
         event.target.tagName === "DIV" && 
         event.target.classList.contains("category")){
@@ -113,8 +111,6 @@ function showProductInfo(product){
     initializeSlider(product.images);
 }
 
-
- 
 function showOrderForm(product){
     const orderForm = document.querySelector('.order_form');
     
@@ -126,6 +122,29 @@ function showOrderForm(product){
     orderForm.classList.remove('hidden');
 }
 
+function validateForm(){
+    let isValid = true;
+    let form = new FormData(document.querySelector(".order"));
+    for (let [name, value] of form.entries()) {
+        console.log(`${name}: ${value}`);
+        if (name==="name"){
+            const nameRegex = /^([А-ЯІЇЄҐ][а-яіїєґ]+(\s|$)){3,}$/;
+           if(!nameRegex.test(value)){
+            alert('Введи нормальне ім\'я, а не оць це все!');
+            isValid = false;
+           }
+        } 
+        if (name==="phone"){
+            const regExp = new RegExp("^\\+380\\d{9}$");
+            if (!regExp.test(value)){
+                alert('Введи нормально номер телефону і не балуйся!');
+                isValid = false;
+            }
+    }
+    }
+    return isValid;
+
+}
 
 document.querySelector('#finish_order').addEventListener('click', () =>{ 
     const client = {
@@ -133,8 +152,9 @@ document.querySelector('#finish_order').addEventListener('click', () =>{
         city: cities[document.forms.order.city.value],
         
     };
-
-
+    if(!validateForm()){
+        return;
+    }
     showSuccessNotification();
     document.querySelector('.order_form').classList.add('hidden');
 });
@@ -158,4 +178,3 @@ document.querySelector('input[name="amount"]').addEventListener('change',  event
     const result = newAmount * price;
     document.getElementById('calculation').textContent = `$${result}`;
 })
-
